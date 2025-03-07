@@ -71,10 +71,11 @@ Copy the path of the checkpoint folder that contains best.pt; it will work like 
 ![image](https://github.com/user-attachments/assets/e7706a92-eceb-4808-b7b0-08f2f5f7fede)
 
 Then launch the application by running run.py and paste the path of the folder containing best.pt.
+
+#For ex: python run.py --checkpoint "C:\Users\DELL\Downloads\Training artifacts\checkpoint"
 ```bash
 python run.py --checkpoint "your-checkpoint-path"
 
-#For ex: python run.py --checkpoint "C:\Users\DELL\Downloads\Training artifacts\checkpoint"
 ```
 Open the provided link in your browser to access the interface. Your work will look like this after everything:
 
