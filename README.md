@@ -49,8 +49,8 @@ pip install torch torchvision gradio opencv-python scikit-learn matplotlib tenso
 ### ▶️ Usage
 Clone the repository:
 ```bash
-git clone https://github.com/Mushrum-mmb/Simple-Deep-Learning-For-Images-Classification
-cd Simple-Deep-Learning-For-Images-Classification
+git clone https://github.com/Mushrum-mmb/Simple-AI-Image-Classification.git
+cd Simple-AI-Image-Classification
 ```
 Launch the application:
 ```bash
