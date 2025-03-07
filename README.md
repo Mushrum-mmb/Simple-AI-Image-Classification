@@ -41,22 +41,42 @@ The Gradio interface can be launched with a simple command, and the share=True o
 
 
 ### ⬇️ Installation
+***Ensure that you have already installed Git and set up your Python environment.***
 
 To run this application locally, ensure you have the following dependencies installed:
 ```bash
 pip install torch torchvision gradio opencv-python scikit-learn matplotlib tensorboard tqdm
 ```
+
+To download the [Training artifacts](https://drive.google.com/file/d/18dlmEhR9DYf4bsbU3hq0zq9g_nekY0zO/view?usp=drive_link) click on the blue underline words or the following URL: [https://drive.google.com/file/d/18dlmEhR9DYf4bsbU3hq0zq9g_nekY0zO/view?usp=drive_link](https://drive.google.com/file/d/18dlmEhR9DYf4bsbU3hq0zq9g_nekY0zO/view?usp=drive_link)
+
+After downloading, unzip the file.
+
 ### ▶️ Usage
-Clone the repository:
+Open CMD and clone the repository.
 ```bash
 git clone https://github.com/Mushrum-mmb/Simple-AI-Image-Classification.git
+```
+Then cd to the clone path.
+```bash
 cd Simple-AI-Image-Classification
 ```
-Launch the application:
+Copy the path of the checkpoint folder that contains best.pt; it will work like this: 
+
+![image](https://github.com/user-attachments/assets/e7706a92-eceb-4808-b7b0-08f2f5f7fede)
+
+Then launch the application by running run.py and paste the path of the folder containing best.pt.
 ```bash
-python run.py
+python run.py --checkpoint "your-checkpoint-path"
+
+#For ex: python run.py --checkpoint "C:\Users\DELL\Downloads\Training artifacts\checkpoint"
 ```
-Open the provided link in your browser to access the interface.
+Open the provided link in your browser to access the interface. Your work will look like this after everything:
+
+![image](https://github.com/user-attachments/assets/07360da9-aae1-4797-bfef-9f2ea7aba9a4)
+
+
+
 ### 👍 How It Works
 
 The application uses a pre-trained ResNet-18 model to analyze uploaded images. The model is fine-tuned on specific animal classes, providing accurate classification results based on the input.
