@@ -26,6 +26,7 @@ This AI application performs image classification using deep learning. Trained o
 
 * Author: [Mushrum-mmb](https://github.com/Mushrum-mmb/)
 * Model: [resnet18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html)
+* Framework: [gradio](https://www.gradio.app/)
 
 ![image](https://github.com/user-attachments/assets/0ca4a168-0f6c-4644-8068-ec4efb402332)
 ![image](https://github.com/user-attachments/assets/c8fb6d3e-8c98-4b5d-9d13-e81f5908a1e2)
