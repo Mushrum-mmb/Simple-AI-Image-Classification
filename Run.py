@@ -59,7 +59,7 @@ def classify_image(image):
 
 # Create Gradio Interface
 iface = gr.Interface(fn=classify_image, inputs="image", outputs="text", title="Animal Classifier",
-                     description="Upload an image of an animal to get its classification. (cat, cow, dog, sheep, elephant, butterfly, squirrel, horse, chicken, spider)")
+                     description="Upload an image of an animal to get its classification (cat, cow, dog, sheep, elephant, butterfly, squirrel, horse, chicken, spider) <br> This project made by Phuong Nam aka Namush =))")
 
 # Launch the interface
 iface.launch(share=True)
