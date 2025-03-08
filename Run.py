@@ -5,7 +5,7 @@ import numpy as np
 import cv2
 import os
 from torchvision.transforms import ToTensor, Normalize, Compose
-from torchvision.models import resnet18, ResNet18_Weights
+from torchvision.models import resnet101, ResNet101_Weights
 import argparse 
 
 # Set up argument parser
@@ -26,7 +26,7 @@ checkpoint_path = args.checkpoint
 device = t.device("cuda" if t.cuda.is_available() else "cpu")
 
 # Initialize model
-model = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
+model = resnet101(weights=ResNet101_Weights.IMAGENET1K_V1)
 in_features = model.fc.in_features
 del model.fc
 model.fc = nn.Linear(in_features=in_features, out_features=len(categories), bias=True)
