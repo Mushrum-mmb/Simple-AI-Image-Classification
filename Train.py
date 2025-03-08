@@ -12,6 +12,24 @@ import matplotlib.pyplot as plt
 import os
 import warnings
 warnings.filterwarnings("ignore")
+import argparse
+
+def get_args():
+    parser = argparse.ArgumentParser(description="Animal classifier")
+    parser.add_argument("--dataset-path", "-d", type=str, help="path to dataset")
+    parser.add_argument("--tensorboard-path", "-o", type=str, help="tensorboard folder")
+    parser.add_argument("--checkpoint-path", "-c", type=str, help="checkpoint folder")
+    parser.add_argument("--resume-training", "-r", type=bool, default=False, help="Continue training or not")
+    parser.add_argument("--height", "-h", type=int, default=224, help="height of all images")
+    parser.add_argument("--width", "-w", type=int, default=224, help="width of all images")
+    parser.add_argument("--batch-size", "-b", type=int, default=32, help="batch size of training procedure")
+    parser.add_argument("--num-epochs","-e", type=int, default=100, help="Number of epochs")
+    parser.add_argument("--learning-rate", "-l",type=float, default=1e-3, help="learning rate of optimizer")
+    parser.add_argument("--num-train", "-t", type=int, help="number of train images")
+    parser.add_argument("--num-val", "-v", type=int, help="number of test images")
+
+    args = parser.parse_args()
+    return args
 
 def plot_confusion_matrix(writer, cm, class_names, epoch):
     figure = plt.figure(figsize=(20, 20))
@@ -40,17 +58,19 @@ def plot_confusion_matrix(writer, cm, class_names, epoch):
 
 
 def train():
+  ####################################################################
+  #chagne all to args here
   num_epochs =  75  #args.num_epochs
   batch_size = 32   #args.batch_size
   learning_rate = 0.001   #args.learning_rate
   num_train = 80    #args.num_train
   num_val = 20     #args.num_val
-  resume_training = False
-  height = 224
-  width = 224
-  #####################################################################
-  tensorboard_path = "/content/drive/MyDrive/tensorboard"
-  checkpoint_path = "/content/drive/MyDrive/checkpoint"
+  resume_training = False #args.resume_training
+  height = 224 #args.height
+  width = 224 #args.width
+  dataset_path = "/content/animals_v2" #args.dataset_path
+  tensorboard_path = "/content/drive/MyDrive/tensorboard" #args.tensorboard_path
+  checkpoint_path = "/content/drive/MyDrive/checkpoint" #args.checkpoint_path
   #####################################################################
   if not os.path.exists(tensorboard_path):
     os.makedirs(tensorboard_path)
@@ -58,14 +78,14 @@ def train():
     os.makedirs(checkpoint_path)
   writer = SummaryWriter(tensorboard_path)
   #####################################################################
-  train_datasets = Datasets("/content/animals_v2", True,height,width,None)
+  train_datasets = Datasets(dataset_path, True, height, width, num_train=None)
   train_dataloader = DataLoader(
       train_datasets,
       batch_size=batch_size,
       shuffle=True,
       num_workers=2,
       drop_last=True)
-  val_datasets = Datasets("/content/animals_v2", False,height,width,None)
+  val_datasets = Datasets(dataset_path, False, height, width, num_val=None)
   val_dataloader = DataLoader(
       val_datasets,
       batch_size=batch_size,
