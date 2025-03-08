@@ -25,7 +25,7 @@
 This AI application performs image classification using deep learning. Trained on my private datasets with the ResNet-18 model, it accurately predicts various animal categories. Users can upload images and receive predictions along with confidence scores.
 
 * Author: [Mushrum-mmb](https://github.com/Mushrum-mmb/)
-* Model: [resnet101](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet101.html#torchvision.models.resnet101)
+* Model: [resnet50](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html#torchvision.models.resnet50)
 * Framework: [gradio](https://www.gradio.app/)
 
 ![image](https://github.com/user-attachments/assets/0ca4a168-0f6c-4644-8068-ec4efb402332)
@@ -229,12 +229,12 @@ Purpose: Initializes the training dataset and DataLoader to manage batch loading
 
 *Model Setup*
 ```
-model = resnet101(weights=ResNet101_Weights.IMAGENET1K_V1)
+model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
 in_features = model.fc.in_features
 del model.fc
 model.fc = nn.Linear(in_features=in_features, out_features=len(train_datasets.categories), bias=True)
 ```
-Purpose: Loads a pre-trained ResNet-101 model and modifies the final layer to match the number of output classes.
+Purpose: Loads a pre-trained ResNet-50 model and modifies the final layer to match the number of output classes.
 
 *Training Loop*
 ```
