@@ -14,6 +14,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import argparse
 
+#Defines a function to parse command-line arguments for the script.
 def get_args():
     parser = argparse.ArgumentParser(description="Animal classifier")
     parser.add_argument("--dataset-path", "-d", type=str, help="path to dataset")
@@ -78,14 +79,14 @@ def train():
     os.makedirs(checkpoint_path)
   writer = SummaryWriter(tensorboard_path)
   #####################################################################
-  train_datasets = Datasets(dataset_path, True, height, width, num_train=None)
+  train_datasets = Datasets(dataset_path, True, height, width, size=None)
   train_dataloader = DataLoader(
       train_datasets,
       batch_size=batch_size,
       shuffle=True,
       num_workers=2,
       drop_last=True)
-  val_datasets = Datasets(dataset_path, False, height, width, num_val=None)
+  val_datasets = Datasets(dataset_path, False, height, width, size=None)
   val_dataloader = DataLoader(
       val_datasets,
       batch_size=batch_size,
@@ -120,6 +121,7 @@ def train():
         best_acc = -1
 
   print("Start training....")
+  print("Start at epoch: ", start_epoch)
   for epoch in range(start_epoch, num_epochs):
     #training
     model.train()
@@ -186,6 +188,11 @@ def train():
       bestpoint = os.path.join(checkpoint_path, "best.pt")
       t.save(saved_data, bestpoint)
       best_acc = accuracy
+    #load and print best acc
+    bestpoint = os.path.join(checkpoint_path, "best.pt")
+    saved_best_acc = t.load(bestpoint)
+    best = saved_best_acc["best_acc"]
+    print(f"Best Accuracy: {best:.4f}")
   writer.close()
 
 if __name__ == '__main__':
