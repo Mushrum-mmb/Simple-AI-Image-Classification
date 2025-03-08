@@ -18,7 +18,7 @@
 - [Installation](#%EF%B8%8F-installation)
 - [Usage](#%EF%B8%8F-usage)
 - [How It Works](#-how-it-works)
-- [License](#%EF%B8%8F-license)
+
 
 ### 🚀 About
 
@@ -87,5 +87,3 @@ Open the provided link in your browser to access the interface. Your work will l
 
 The application uses a pre-trained ResNet-18 model to analyze uploaded images. The model is fine-tuned on specific animal classes, providing accurate classification results based on the input.
 
-### ©️ License
-This project is licensed under the MIT License. See the LICENSE file for details.
