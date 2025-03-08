@@ -1,6 +1,6 @@
 import torch as t
 import torch.nn as nn
-from torchvision.models import resnet101, ResNet101_Weights
+from torchvision.models import resnet50, ResNet50_Weights
 import os
 import cv2
 import numpy as np
@@ -13,7 +13,7 @@ def test(image_path):
   device = t.device("cuda" if t.cuda.is_available() else "cpu")
   print("Device: ",device)
   # model = EfficientNet_B7(len(categories))
-  model = resnet101(weights=ResNet101_Weights.IMAGENET1K_V1)
+  model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
   in_features = model.fc.in_features
   del model.fc
   model.fc = nn.Linear(in_features=in_features, out_features=len(categories), bias=True)
