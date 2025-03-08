@@ -6,7 +6,7 @@ from torch.utils.tensorboard import SummaryWriter
 from sklearn.metrics import accuracy_score, confusion_matrix
 import numpy as np
 # from torchinfo import summary
-from torchvision.models import resnet18, ResNet18_Weights
+from torchvision.models import resnet101, ResNet101_Weights
 from Datasets import Datasets
 import matplotlib.pyplot as plt
 import os
@@ -100,7 +100,7 @@ def train():
   print("len_train_data: ", len(train_datasets))
   print("len_val_data: ", len(val_datasets))
 
-  model = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
+  model = resnet101(weights=ResNet101_Weights.IMAGENET1K_V1)
   in_features = model.fc.in_features
   del model.fc
   model.fc = nn.Linear(in_features=in_features, out_features=len(train_datasets.categories), bias=True)
