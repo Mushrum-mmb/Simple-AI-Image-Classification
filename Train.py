@@ -111,14 +111,15 @@ def train():
 
   if resume_training:
     checkpoint = os.path.join(checkpoint_path, "last.pt")
-    saved_data = t.load(checkpoint)
+    saved_data = t.load(checkpoint, map_location=device)
     model.load_state_dict(saved_data["model"])
     optimizer.load_state_dict(saved_data["optimizer"])
     start_epoch = saved_data["epoch"]
-    best_acc = saved_data["best_acc"]
+    accuracy = saved_data["accuracy"]
   else:
         start_epoch = 0
-        best_acc = -1
+        accuracy = -1
+        goat= -1
 
   print("Start training....")
   print("Start at epoch: ", start_epoch)
@@ -174,26 +175,24 @@ def train():
     writer.add_scalar("Val/Accuracy", accuracy, global_step=epoch)
     print(f"Epoch: {epoch+1}, Validation Loss: {avg_loss:.4f}, Validation Accuracy: {accuracy:.4f}")
     plot_confusion_matrix(writer, confusion_matrix(all_labels, all_predictions), train_datasets.categories, epoch)
-
     #save architecture
     saved_data = {
             "model": model.state_dict(),
             "optimizer": optimizer.state_dict(),
             "epoch": epoch+1,
-            "best_acc": best_acc,
+            "accuracy": accuracy,
         }
     checkpoint = os.path.join(checkpoint_path, "last.pt")
     t.save(saved_data, checkpoint)
-    if accuracy > best_acc:
+    if epoch > 0:
+      #load and print best acc
+      bestpoint = os.path.join(checkpoint_path, "best.pt")
+      saved_best_point = t.load(bestpoint,  map_location=device)
+      goat = saved_best_point["accuracy"]
+      print(f"Best Accuracy: {goat:.4f}")
+    if accuracy > goat:
       bestpoint = os.path.join(checkpoint_path, "best.pt")
       t.save(saved_data, bestpoint)
-      best_acc = accuracy
-    #load and print best acc
-    bestpoint = os.path.join(checkpoint_path, "best.pt")
-    saved_best_acc = t.load(bestpoint)
-    best = saved_best_acc["best_acc"]
-    print(f"Best Accuracy: {best:.4f}")
   writer.close()
-
 if __name__ == '__main__':
     train()
