@@ -252,7 +252,7 @@ saved_data = {
     "model": model.state_dict(),
     "optimizer": optimizer.state_dict(),
     "epoch": epoch + 1,
-    "best_acc": best_acc,
+    "accuracy": accuracy,
 }
 checkpoint = os.path.join(checkpoint_path, "last.pt")
 t.save(saved_data, checkpoint)
@@ -262,7 +262,6 @@ Purpose: Saves the model state, optimizer state, current epoch, and best accurac
 if accuracy > best_acc:
     bestpoint = os.path.join(checkpoint_path, "best.pt")
     t.save(saved_data, bestpoint)
-    best_acc = accuracy
 ```
 Purpose: If the current accuracy exceeds the best recorded accuracy, it saves this state as the best checkpoint.
 
