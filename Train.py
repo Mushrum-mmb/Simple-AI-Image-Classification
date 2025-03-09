@@ -64,8 +64,8 @@ def train():
   num_epochs =  75  #args.num_epochs
   batch_size = 32   #args.batch_size
   learning_rate = 0.001   #args.learning_rate
-  num_train = 80    #args.num_train
-  num_val = 20     #args.num_val
+  num_train = None    #args.num_train
+  num_val = None     #args.num_val
   resume_training = False #args.resume_training
   height = 224 #args.height
   width = 224 #args.width
@@ -79,14 +79,14 @@ def train():
     os.makedirs(checkpoint_path)
   writer = SummaryWriter(tensorboard_path)
   #####################################################################
-  train_datasets = Datasets(dataset_path, True, height, width, size=None)
+  train_datasets = Datasets(dataset_path, True, height, width, num_train)
   train_dataloader = DataLoader(
       train_datasets,
       batch_size=batch_size,
       shuffle=True,
       num_workers=2,
       drop_last=True)
-  val_datasets = Datasets(dataset_path, False, height, width, size=None)
+  val_datasets = Datasets(dataset_path, False, height, width, num_val)
   val_dataloader = DataLoader(
       val_datasets,
       batch_size=batch_size,
