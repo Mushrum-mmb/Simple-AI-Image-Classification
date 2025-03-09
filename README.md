@@ -1,6 +1,6 @@
 # Simple-AI-Image-Classification
 
-# Work in progress ⏳
+# Work in progress ⏳ The training is still not complete -_-
 
 ⭐ Star me on GitHub — it motivates me a lot!
 
