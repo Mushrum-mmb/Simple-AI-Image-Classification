@@ -19,8 +19,10 @@ def test(image_path):
   model.fc = nn.Linear(in_features=in_features, out_features=len(categories), bias=True)
 
   model.to(device)
-  checkpoint = os.path.join(checkpoint_path, "best.pt")
-  saved_data = t.load(checkpoint, map_location=device)
+  bestpoint = os.path.join(checkpoint_path, "best.pt")
+  saved_data = t.load(bestpoint, map_location=device)
+  best = saved_data["accuracy"]
+  print(f"Accuracy: {best:.4f}")
   model.load_state_dict(saved_data["model"])
   model.eval()
 
