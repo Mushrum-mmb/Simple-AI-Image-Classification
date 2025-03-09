@@ -35,6 +35,7 @@ model.to(device)
 # Load model weights
 bestpoint = os.path.join(checkpoint_path, "best.pt")
 saved_data = t.load(bestpoint, map_location=device)
+best = saved_data["accuracy"]
 model.load_state_dict(saved_data["model"])
 model.eval()
 
@@ -59,7 +60,7 @@ def classify_image(image):
 
 # Create Gradio Interface
 iface = gr.Interface(fn=classify_image, inputs="image", outputs="text", title="Animal Classifier",
-                     description="Upload an image of an animal to get its classification (cat, cow, dog, sheep, elephant, butterfly, squirrel, horse, chicken, spider) <br> This project made by Phuong Nam aka Namush =))")
+                     description=f"Upload an image of an animal to get its classification (cat, cow, dog, sheep, elephant, butterfly, squirrel, horse, chicken, spider) <br> This project made by Phuong Nam aka Namush =)) <br> The accuracy of the model is {best*100:.1f}% ")
 
 # Launch the interface
 iface.launch(share=True)
