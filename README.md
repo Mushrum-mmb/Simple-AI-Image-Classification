@@ -30,6 +30,7 @@ This AI application performs image classification using deep learning. Trained o
 
 ![image](https://github.com/user-attachments/assets/0ca4a168-0f6c-4644-8068-ec4efb402332)
 ![image](https://github.com/user-attachments/assets/c8fb6d3e-8c98-4b5d-9d13-e81f5908a1e2)
+## ----------------------------The accuracy now is 91.33%------------------------------
 ![individualImage](https://github.com/user-attachments/assets/c493b040-d629-481f-8fe0-e5cb37c2ee57)
 
 ### 🎓 Features
@@ -53,7 +54,7 @@ To run this application locally, ensure you have the following dependencies inst
 pip install torch torchvision gradio opencv-python scikit-learn matplotlib tensorboard tqdm
 ```
 
-To download the [Training artifacts](https://drive.google.com/file/d/18dlmEhR9DYf4bsbU3hq0zq9g_nekY0zO/view?usp=drive_link) click on the blue underline words or the following URL: [https://drive.google.com/file/d/18dlmEhR9DYf4bsbU3hq0zq9g_nekY0zO/view?usp=drive_link](https://drive.google.com/file/d/18dlmEhR9DYf4bsbU3hq0zq9g_nekY0zO/view?usp=drive_link)
+To download the [Training artifacts](https://drive.google.com/file/d/1THwFcfmQg6mBCg6ZQnIu-bjSRrNGxeIj/view?usp=sharing) click on the blue underline words or the following URL: [https://drive.google.com/file/d/1THwFcfmQg6mBCg6ZQnIu-bjSRrNGxeIj/view?usp=sharing](https://drive.google.com/file/d/1THwFcfmQg6mBCg6ZQnIu-bjSRrNGxeIj/view?usp=sharing)
 
 After downloading, unzip the file.
 
