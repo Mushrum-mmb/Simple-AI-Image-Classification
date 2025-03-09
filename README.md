@@ -85,4 +85,24 @@ Open the provided link in your browser to access the interface. Your work will l
 
 ### 👍 How It Works
 
+**1. Datasets.py:**
+* Defines a custom dataset class, Datasets, that inherits from torch.utils.data.Dataset.
+* It initializes with paths to image files and their corresponding labels, normalizes images, and prepares transformations for training and testing.
+* Supports loading training and testing data from specified directories.
+  
+**2. Train.py:**
+* Contains the main training loop for an animal classification model using a ResNet architecture.
+* Parses command-line arguments for dataset paths, hyperparameters, and logging paths.
+* Initializes the dataset, data loaders, model, loss function, and optimizer.
+* Trains the model for a specified number of epochs, logging training and validation losses and accuracies to TensorBoard.
+* Saves model checkpoints during training and tracks the best model based on validation accuracy.
 
+**3. Test.py:**
+* Loads a trained model and performs inference on a single image.
+* Preprocesses the image, runs it through the model, and predicts the class label with the associated probability.
+* Displays the original image along with the predicted class and confidence.
+  
+**4. Run.py:**
+* Sets up a Gradio web interface for the model, enabling users to upload images for classification.
+* Loads the trained model from a specified checkpoint, processes uploaded images, and returns predictions.
+* Provides a user-friendly interface for real-time image classification.
