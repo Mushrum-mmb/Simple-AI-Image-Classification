@@ -8,7 +8,7 @@ from torchvision.transforms import ToTensor, Normalize, Compose
 import matplotlib.pyplot as plt
 
 def test(image_path):
-  categories = ["cat", "cow", "dog", "sheep", "elephant", "butterfly", "squirrel", "horse", "chicken","spider"]
+  categories = ['elephant', 'cat', 'horse', 'spider', 'dog', 'chicken', 'butterfly', 'cow', 'sheep', 'squirrel']
   checkpoint_path = "/content/drive/MyDrive/checkpoint"
   device = t.device("cuda" if t.cuda.is_available() else "cpu")
   print("Device: ",device)
