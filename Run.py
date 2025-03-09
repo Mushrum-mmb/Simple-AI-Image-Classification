@@ -33,8 +33,8 @@ model.fc = nn.Linear(in_features=in_features, out_features=len(categories), bias
 model.to(device)
 
 # Load model weights
-checkpoint = os.path.join(checkpoint_path, "best.pt")
-saved_data = t.load(checkpoint, map_location=device)
+bestpoint = os.path.join(checkpoint_path, "best.pt")
+saved_data = t.load(bestpoint, map_location=device)
 model.load_state_dict(saved_data["model"])
 model.eval()
 
