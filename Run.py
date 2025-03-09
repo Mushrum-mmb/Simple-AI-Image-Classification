@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 
 # Load the model once
-categories = ["cat", "cow", "dog", "sheep", "elephant", "butterfly", "squirrel", "horse", "chicken", "spider"]
+categories = ['elephant', 'cat', 'horse', 'spider', 'dog', 'chicken', 'butterfly', 'cow', 'sheep', 'squirrel']
 
 #change the checkpoint path here
 ######################################################################################
