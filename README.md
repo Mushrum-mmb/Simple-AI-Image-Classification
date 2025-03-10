@@ -51,7 +51,7 @@ The Gradio interface can be launched with a simple command, and the share=True o
 
 To run this application locally, ensure you have opened the CMD and have the following dependencies installed:
 ```bash
-pip install torch torchvision gradio opencv-python scikit-learn matplotlib tensorboard tqdm
+pip install torch torchvision gradio opencv-python scikit-learn matplotlib tensorboard tqdm requests beautifulsoup4
 ```
 
 To download the zip file named 'Training artifacts', click on the release tab or [click here.](https://github.com/Mushrum-mmb/Simple-AI-Image-Classification/releases/tag/Training_artifacts) 
@@ -86,24 +86,30 @@ Open the provided link in your browser to access the interface. Your work will l
 
 ### 👍 How It Works
 
-**1. Datasets.py:**
+**1. Collect.py:**
+* Automates the process of downloading images from Google Images based on a specified search query.
+* Defines a function, collect_images, which takes a search term, number of images, and a directory path as input.
+* Constructs a Google Images search URL, makes an HTTP request, and parses the HTML to find image URLs.
+* Validates and downloads the images, saving them to the specified directory with structured filenames.
+
+**2. Datasets.py:**
 * Defines a custom dataset class, Datasets, that inherits from torch.utils.data.Dataset.
 * It initializes with paths to image files and their corresponding labels, normalizes images, and prepares transformations for training and testing.
 * Supports loading training and testing data from specified directories.
   
-**2. Train.py:**
+**3. Train.py:**
 * Contains the main training loop for an animal classification model using a ResNet architecture.
 * Parses command-line arguments for dataset paths, hyperparameters, and logging paths.
 * Initializes the dataset, data loaders, model, loss function, and optimizer.
 * Trains the model for a specified number of epochs, logging training and validation losses and accuracies to TensorBoard.
 * Saves model checkpoints during training and tracks the best model based on validation accuracy.
 
-**3. Test.py:**
+**4. Test.py:**
 * Loads a trained model and performs inference on a single image.
 * Preprocesses the image, runs it through the model, and predicts the class label with the associated probability.
 * Displays the original image along with the predicted class and confidence.
   
-**4. Run.py:**
+**5. Run.py:**
 * Sets up a Gradio web interface for the model, enabling users to upload images for classification.
 * Loads the trained model from a specified checkpoint, processes uploaded images, and returns predictions.
 * Provides a user-friendly interface for real-time image classification.
