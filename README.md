@@ -67,7 +67,7 @@ Then cd to the clone path.
 ```bash
 cd Simple-AI-Image-Classification
 ```
-Copy the path of the checkpoint folder that contains best.pt; it will work like this: 
+Copy the path of the checkpoint folder in Training artifacts that contains best.pt; it will work like this: 
 
 ![image](https://github.com/user-attachments/assets/e7706a92-eceb-4808-b7b0-08f2f5f7fede)
 
