@@ -49,7 +49,7 @@ The Gradio interface can be launched with a simple command, and the share=True o
 ### ⬇️ Installation
 ***Ensure that you have already installed Git and set up your Python environment.***
 
-To run this application locally, ensure you have the following dependencies installed:
+To run this application locally, ensure you have opened the CMD and have the following dependencies installed:
 ```bash
 pip install torch torchvision gradio opencv-python scikit-learn matplotlib tensorboard tqdm
 ```
