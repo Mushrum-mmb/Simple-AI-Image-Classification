@@ -87,9 +87,9 @@ Open the provided link in your browser to access the interface. Your work will l
 ### 👍 How It Works
 
 **1. Collect.py:**
-* Automates the process of downloading images from Google Images based on a specified search query.
-* Defines a function, collect_images, which takes a search term, number of images, and a directory path as input.
-* Constructs a Google Images search URL, makes an HTTP request, and parses the HTML to find image URLs.
+* Automates downloading images from Google Images based on a search query.
+* Defines a function, collect_images, that takes a search term, number of images, and a directory path as input.
+* Constructs a Google Images search URL with pagination, makes an HTTP request, and parses the HTML to find image URLs.
 * Validates and downloads the images, saving them to the specified directory with structured filenames.
 
 **2. Datasets.py:**
