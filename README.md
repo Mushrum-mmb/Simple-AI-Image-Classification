@@ -17,6 +17,7 @@
 - [Features](#-features)
 - [Installation](#%EF%B8%8F-installation)
 - [Usage](#%EF%B8%8F-usage)
+- [Google Colab Usage]()
 - [How It Works](#-how-it-works)
 
 
@@ -82,6 +83,11 @@ Open the provided link in your browser to access the interface. Your work will l
 
 ![image](https://github.com/user-attachments/assets/07360da9-aae1-4797-bfef-9f2ea7aba9a4)
 
+### 💻 Google Colab Usage
+
+If you can train and run the script on your potato computer like I do, you can also run the script in Google Colab, which I am using to train this AI. :')
+
+[Click here](https://colab.research.google.com/drive/13yuj3zqh8ed1wi9KkUfnDeBKN0ZYgel1?usp=sharing)
 
 
 ### 👍 How It Works
