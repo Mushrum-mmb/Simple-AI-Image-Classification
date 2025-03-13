@@ -22,7 +22,7 @@ class AnimalDatasets(Dataset):
         self.width = width
         self.categories = os.listdir(os.path.join(root, 'train'))
         # Initialize the mean and standard deviation for normalization. Compose the ToTensor() and Normalize() functions to initialize the transforms.
-        mean = np.array([0.485, 0.546, 0.406])
+        mean = np.array([0.485, 0.456, 0.406])
         std = np.array([0.229, 0.224, 0.225])
         self.transform = Compose([
             ToTensor(),
@@ -57,3 +57,26 @@ class AnimalDatasets(Dataset):
         image = self.transform(image)
         label = self.labels[idx]
         return image, label
+if __name__ == '__main__':
+    """
+    We can test the datasets by retrieving an image or visualizing it using plt or cv2.
+    Set the dataset_path and use __getitem__ to retrieve the image and label.
+    """
+    dataset_path = "/content/drive/MyDrive/AnimalDataset"
+    test_dataset = AnimalDatasets(dataset_path, True, 240, 240, None)
+    # Retrieve an image and its label
+    index = 1
+    image, label = test_dataset.__getitem__(index) # Change index to retrieve different images
+      
+    # Display the image using matplotlib
+    import matplotlib.pyplot as plt
+    # Convert the tensor back to numpy for visualization
+    image = image.numpy().transpose((1, 2, 0))  # Convert from (C, H, W) to (H, W, C)
+    mean = np.array([0.485, 0.456, 0.406])
+    std = np.array([0.229, 0.224, 0.225])
+    image = image * std + mean  # Denormalize
+    # Plot the image
+    plt.imshow(image)
+    plt.title(test_dataset.categories[label])
+    plt.axis('off')
+    plt.show()
