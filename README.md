@@ -17,7 +17,7 @@
 - [Features](#-features)
 - [Installation](#%EF%B8%8F-installation)
 - [Usage](#%EF%B8%8F-usage)
-- [Google Colab Usage]()
+- [Google Colab Usage](#-google-colab-usage)
 - [How It Works](#-how-it-works)
 
 
