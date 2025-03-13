@@ -1,55 +1,59 @@
-from torch.utils.data import Dataset, DataLoader
+"""
+In this script, we will load and read the images to transform them for our model, allowing it to understand the images.
+We will inherit the dataset structure from torch.utils.data.
+First import:
+- from torch.utils.data import Dataset: For creating custom datasets in PyTorch.
+- import os: For file and directory operations.
+- import numpy as np: For numerical operations and array handling.
+- from torchvision.transforms import ToTensor, Normalize, Compose: For image preprocessing (converting to tensors, normalization, and chaining transformations). 
+"""
+from torch.utils.data import Dataset
 import os
-import cv2
-from torchvision.transforms import ToTensor, Normalize, Compose
-import random
 import numpy as np
-
-#Defines a new class Datasets that inherits from Dataset
-class Datasets(Dataset):
-    def __init__(self, root, is_train,height,width, size = None):
-        #Initializes empty lists to hold image file paths and their corresponding labels.
+from torchvision.transforms import ToTensor, Normalize, Compose
+import cv2
+# Create a class for our dataset.
+class AnimalDatasets(Dataset):
+    def __init__(self, root, is_train, height, width, size= None):
+        # Initialize the images and labels lists, the height and width of the images, and the categories by joining the paths of the train or validation dataset.
         self.images = []
         self.labels = []
-        #Defines the mean and standard deviation for normalizing images.
-        mean = np.array([0.485, 0.546, 0.406])
-        std = np.array([0.229, 0.224, 0.225])
-        #Stores the image dimensions and sets up a transformation pipeline that converts images to tensors and normalizes them using the defined mean and standard deviation.
         self.height = height
         self.width = width
+        self.categories = os.listdir(os.path.join(root, 'train'))
+        # Initialize the mean and standard deviation for normalization. Compose the ToTensor() and Normalize() functions to initialize the transforms.
+        mean = np.array([0.485, 0.546, 0.406])
+        std = np.array([0.229, 0.224, 0.225])
         self.transform = Compose([
             ToTensor(),
-            Normalize(mean=mean, std=std)
+            Normalize(mean, std)
         ])
-        # Lists the categories (subdirectories) of images in the test directory under animals and stores them in self.categories.
-        self.categories = os.listdir(os.path.join(root, 'animals', 'test'))
-        #Constructs the path to either the training or testing data based on the is_train flag.
-        data_path = os.path.join(root, 'animals')
+        # If is_train is true, we join the path to the training dataset; otherwise, we join it to the validation dataset.
         if is_train:
-            data_path = os.path.join(data_path, 'train')
+            data_path = os.path.join(root, 'train')
         else:
-            data_path = os.path.join(data_path, 'test')
-        #Iterates over each category, constructs the path to each image file, and appends the full path to self.images. It also appends the corresponding label (the category index) to self.labels.
+            data_path = os.path.join(root, 'val')
+        # Collect all images path and label iterate to our list through loop
         for i, category in enumerate(self.categories):
-            data_files = os.path.join(data_path, category)
-            for item in os.listdir(data_files):
-                path = os.path.join(data_files, item)
-                self.images.append(path)
+            image_paths = os.path.join(data_path, category)
+            for path in os.listdir(image_paths):
+                image_path = os.path.join(image_paths, path)
+                self.images.append(image_path)
                 self.labels.append(i)
-        #If a size is specified and is less than the total number of images, it randomly samples the specified number of images and their labels.
+        # Collect all image paths and labels, and iterate through the loop to add them to our lists.
         if size is not None and size < len(self.images):
             indices = random.sample(range(len(self.images)), size)
             self.images = [self.images[i] for i in indices]
             self.labels = [self.labels[i] for i in indices]
-    #Returns the total number of samples (images) in the dataset.
+    #Define a __len__ function to retrieve length of images.
     def __len__(self):
-        return len(self.labels)
-    #Retrieves an image and its label based on the provided index (idx).
+        return len(self.images)
+    # Define a __getitem__ function to retrieve images.
     def __getitem__(self, idx):
-        path = self.images[idx]
-        image = cv2.imread(path) #Reads the image from the file.
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) #Converts the image from BGR (OpenCV format) to RGB.
-        image = cv2.resize(image,(self.height,self.width)) #Resizes the image to the specified dimensions.
-        image = self.transform(image) #Applies the transformations (normalization).
+        image_path = self.images[idx]
+        image = cv2.imread(image_path)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        image = cv2.resize(image, (self.height, self.width))
+        image = self.transform(image)
         label = self.labels[idx]
         return image, label
