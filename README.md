@@ -1,6 +1,6 @@
 # Simple-AI-Image-Classification
 
-# Work in progress ⏳ The training is still not complete -_-
+# Work in progress ⏳ I will consider the accuracy now, kinda sus <(")
 
 ⭐ Star me on GitHub — it motivates me a lot!
 
@@ -64,7 +64,7 @@ To run this application locally, ensure you have opened the CMD and have the fol
 pip install torch torchvision gradio opencv-python scikit-learn matplotlib tensorboard tqdm requests beautifulsoup4
 ```
 
-To download the zip file named 'Training artifacts', click on the release tab or [click here.](https://github.com/Mushrum-mmb/Simple-AI-Image-Classification/releases/tag/Training_artifacts) 
+**To download the zip file named 'Training artifacts', click on the release tab or [click here.](https://github.com/Mushrum-mmb/Simple-AI-Image-Classification/releases/tag/Training_artifacts)**
 
 After downloading, unzip the file.
 
@@ -98,9 +98,12 @@ If you can't train and run the script on your potato computer like I do, you can
 
 Just read and run the cell in Google Colab for investment purposes. If you only want to use the AI, I will provide direct tutoring.
 
-[Click here for access my notebook](https://colab.research.google.com/drive/13yuj3zqh8ed1wi9KkUfnDeBKN0ZYgel1?usp=sharing)
+### [Click here for access my notebook](https://colab.research.google.com/drive/13yuj3zqh8ed1wi9KkUfnDeBKN0ZYgel1?usp=sharing)
 
 First, scroll to this section:
+
+![image](https://github.com/user-attachments/assets/a9c9d4eb-e80b-46d0-9c46-64fd4d145e49)
+
 
 Then run the first cell to install `Gradio`
 
@@ -109,14 +112,17 @@ Then run the first cell to install `Gradio`
 Then upload the 'Training artifacts' to the /content path. This path is the default when you connect to the runtime.
 
 ![image](https://github.com/user-attachments/assets/5dde14d7-eac2-462b-bd45-a672e5d02815)
+
 Done
 
-![image](https://github.com/user-attachments/assets/e7ec753c-9607-42bd-80f2-4a3f944d946c)
+![image](https://github.com/user-attachments/assets/d14bfc65-8367-4f02-b0e5-e869288c3421)
+
 
 Run the next cell.
 
-![image](https://github.com/user-attachments/assets/29b378f6-6041-4205-a649-b2bcf07b083c)
+![image](https://github.com/user-attachments/assets/c19f80b7-d3e3-4fb8-ac37-770ccc8ae5d8)
 
+Run the final cell and enjoy it ^V^.
 
 ### 👍 How It Works
 
