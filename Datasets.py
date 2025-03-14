@@ -6,11 +6,14 @@ First import:
 - import os: For file and directory operations.
 - import numpy as np: For numerical operations and array handling.
 - from torchvision.transforms import ToTensor, Normalize, Compose: For image preprocessing (converting to tensors, normalization, and chaining transformations). 
+- import random: For generating random numbers and performing random operations.
+- import cv2: For computer vision and image processing tasks.
 """
 from torch.utils.data import Dataset
 import os
 import numpy as np
 from torchvision.transforms import ToTensor, Normalize, Compose
+import random
 import cv2
 # Create a class for our dataset.
 class AnimalDatasets(Dataset):
