@@ -31,8 +31,9 @@ This AI application performs image classification using deep learning. Trained o
 
 ![image](https://github.com/user-attachments/assets/0ca4a168-0f6c-4644-8068-ec4efb402332)
 ![image](https://github.com/user-attachments/assets/c8fb6d3e-8c98-4b5d-9d13-e81f5908a1e2)
-## The accuracy now is 91.33%
-![individualImage](https://github.com/user-attachments/assets/c493b040-d629-481f-8fe0-e5cb37c2ee57)
+## The accuracy now is 99.91% (kinda sus, as this accuracy is calculated from the validation datasets).
+![individualImage](https://github.com/user-attachments/assets/15509cc8-ad6e-4a65-aa44-0297fbffdb9f)
+
 
 ### 🎓 Features
 * Image Classification:
@@ -93,6 +94,22 @@ If you can't train and run the script on your potato computer like I do, you can
 Just read and run the cell in Google Colab for investment purposes. If you only want to use the AI, I will provide direct tutoring.
 
 [Click here for access my notebook](https://colab.research.google.com/drive/13yuj3zqh8ed1wi9KkUfnDeBKN0ZYgel1?usp=sharing)
+
+First, scroll to this section:
+
+Then run the first cell to install `Gradio`
+![image](https://github.com/user-attachments/assets/85778e45-9bdf-4b05-a9d8-48efedd338f6)
+
+Then upload the 'Training artifacts' to the /content path. This path is the default when you connect to the runtime.
+
+![image](https://github.com/user-attachments/assets/5dde14d7-eac2-462b-bd45-a672e5d02815)
+Done
+
+![image](https://github.com/user-attachments/assets/e7ec753c-9607-42bd-80f2-4a3f944d946c)
+
+Run the next cell.
+
+![image](https://github.com/user-attachments/assets/29b378f6-6041-4205-a649-b2bcf07b083c)
 
 
 ### 👍 How It Works
