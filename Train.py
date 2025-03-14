@@ -118,6 +118,8 @@ def train():  #def train(args):
   for epoch in range(start_epoch, num_epochs):
     # Training phase
     model.train()
+    # Initalize couter total losses and progress bar for per epoch
+    total_losses = []
     
   
 # Defines a function named plot_confusion_matrix, which is designed to visualize a confusion matrix using Matplotlib.
