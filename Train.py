@@ -5,7 +5,18 @@ As usual, we will run the script in CMD or terminal, but I am using Google Colab
 However, I think I will need it, and you might too.
 Therefore, in this script, I will create a function to parse command-line arguments.
 First import:
-
+- import argparse: Parses command-line arguments to configure script behavior.
+- import os: Interacts with the operating system for file and directory operations.
+- from torch.utils.tensorboard import SummaryWriter: Logs data for visualization in TensorBoard.
+- from Datasets import AnimalDatasets: Imports a custom dataset class for handling animal data.
+- from torch.utils.data import DataLoader: Loads datasets in batches for efficient training.
+- import torch: Main library for building and training neural networks in PyTorch.
+- from torchvision.models import resnet50, ResNet50_Weights: Imports the ResNet50 model architecture and weights for image classification.
+- import torch.nn as nn: Contains classes for building neural network layers in PyTorch.
+- from tqdm import tqdm: Provides a progress bar for tracking loop progress.
+- import numpy as np: Supports numerical computations and array operations.
+- from sklearn.metrics import accuracy_score, confusion_matrix: Evaluates model performance with accuracy and confusion matrix metrics.
+- import matplotlib.pyplot as plt: Creates visualizations for data analysis.
 """
 import argparse
 import os
