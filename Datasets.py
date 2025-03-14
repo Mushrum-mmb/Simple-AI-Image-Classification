@@ -18,12 +18,12 @@ import cv2
 # Create a class for our dataset.
 class AnimalDatasets(Dataset):
     def __init__(self, root, is_train, height, width, size= None):
-        # Initialize the images and labels lists, the height and width of the images, and the categories by joining the paths of the train or validation dataset.
+        # Initialize the images and labels lists, the height and width of the images, and the constantly categories.
         self.images = []
         self.labels = []
         self.height = height
         self.width = width
-        self.categories = os.listdir(os.path.join(root, 'train'))
+        self.categories = ['dog','cat','cabypara','hamster','parrot','pufferfish']
         # Initialize the mean and standard deviation for normalization. Compose the ToTensor() and Normalize() functions to initialize the transforms.
         mean = np.array([0.485, 0.456, 0.406])
         std = np.array([0.229, 0.224, 0.225])
