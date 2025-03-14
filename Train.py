@@ -17,6 +17,7 @@ First import:
 - import numpy as np: Supports numerical computations and array operations.
 - from sklearn.metrics import accuracy_score, confusion_matrix: Evaluates model performance with accuracy and confusion matrix metrics.
 - import matplotlib.pyplot as plt: Creates visualizations for data analysis.
+- import warnings: is used to issue and manage warning messages in Python.
 """
 import argparse
 import os
@@ -30,6 +31,16 @@ from tqdm import tqdm
 import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
+import warnings 
+"""
+The warning we are encountering indicates that we are using torch.load with the default parameter weights_only=False.
+This setting can be risky because it allows the loading of arbitrary Python objects, which could potentially execute malicious code during the unpickling process.
+However, we are not only loading the model weights but also other components like the optimizer state, accuracy, and additional metadata.
+Therefore, setting weights_only=True may not be suitable for our use case.
+We will use the warnings module to ignore warnings if they become too messy.
+In a future release of PyTorch, the default value of weights_only will change to True, so the code in the future may include a parameter like weights_only=False.
+"""
+warnings.filterwarnings("ignore")
 
 # Defines a function to parse command-line arguments for the script.
 def get_args():
