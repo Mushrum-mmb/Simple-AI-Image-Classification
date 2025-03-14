@@ -29,10 +29,15 @@ This AI application performs image classification using deep learning. Trained o
 * Model: [resnet50](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html#torchvision.models.resnet50)
 * Framework: [gradio](https://www.gradio.app/)
 
-![image](https://github.com/user-attachments/assets/0ca4a168-0f6c-4644-8068-ec4efb402332)
-![image](https://github.com/user-attachments/assets/c8fb6d3e-8c98-4b5d-9d13-e81f5908a1e2)
+![image](https://github.com/user-attachments/assets/df568fd1-b25f-49e3-92c5-360d37624238)
+![image](https://github.com/user-attachments/assets/4556fa99-a84a-4df5-8e14-5cdbf633069f)
+
 ## The accuracy now is 99.91% (kinda sus, as this accuracy is calculated from the validation datasets).
 ![individualImage](https://github.com/user-attachments/assets/15509cc8-ad6e-4a65-aa44-0297fbffdb9f)
+![image](https://github.com/user-attachments/assets/790bfbe7-4385-489f-92fa-9279ba989c00)
+![image](https://github.com/user-attachments/assets/46f773bf-4750-4be9-99ce-519df895aeed)
+![image](https://github.com/user-attachments/assets/c580c9c8-07c0-40bf-af62-96fd00013b82)
+![image](https://github.com/user-attachments/assets/d5d7006c-66b2-4c90-9fa3-f9bdc218376b)
 
 
 ### 🎓 Features
@@ -98,6 +103,7 @@ Just read and run the cell in Google Colab for investment purposes. If you only 
 First, scroll to this section:
 
 Then run the first cell to install `Gradio`
+
 ![image](https://github.com/user-attachments/assets/85778e45-9bdf-4b05-a9d8-48efedd338f6)
 
 Then upload the 'Training artifacts' to the /content path. This path is the default when you connect to the runtime.
