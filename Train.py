@@ -9,12 +9,16 @@ First import:
 """
 import argparse
 import os
+from torch.utils.tensorboard import SummaryWriter
 from Datasets import AnimalDatasets
 from torch.utils.data import DataLoader
 import torch
 from torchvision.models import resnet50, ResNet50_Weights
 import torch.nn as nn
 from tqdm import tqdm
+import numpy as np
+from sklearn.metrics import accuracy_score, confusion_matrix
+import matplotlib.pyplot as plt
 
 # Defines a function to parse command-line arguments for the script.
 def get_args():
@@ -59,6 +63,10 @@ def train():  #def train(args):
     os.makedirs(tensorboard_path)
   if not os.path.exists(checkpoint_path):
     os.makedirs(checkpoint_path)
+
+  # Visualization within the TensorBoard UI.
+  writer = SummaryWriter(tensorboard_path)
+  
   # Retrieve the training and validation datasets. Use a DataLoader to retrieve images in batch size, shuffle them, and drop the last batch if needed.
   train_datasets = AnimalDatasets(dataset_path, True, height, width, num_train)
   val_datasets = AnimalDatasets(dataset_path, False, height, width, num_val)
@@ -108,6 +116,7 @@ def train():  #def train(args):
     bestpoint = os.path.join(checkpoint_path, 'best.pt')
     saved_best_data = torch.load(bestpoint, map_location=device)
     goat = saved_best_data['accuracy']
+    print(f"Best Accuracy now: {goat:.4f}") # Print the best accuracy now
   else:
     start_epoch = 0
     accuracy = -1
@@ -118,10 +127,123 @@ def train():  #def train(args):
   for epoch in range(start_epoch, num_epochs):
     # Training phase
     model.train()
-    # Initalize couter total losses and progress bar for per epoch
+    # Initalize counter total losses and progress bar for per training phase
     total_losses = []
+    progress_bar = tqdm(train_dataloader, colour="yellow")
     
-  
+    for iter, (images, labels) in enumerate(progress_bar):
+      # Forward pass
+      images = images.to(device)
+      output = model(images)
+      # Calculate loss, total_losses and avg_loss
+      labels = labels.to(device)
+      loss = criterion(output, labels)
+      total_losses.append(loss.item())
+      avg_loss = np.mean(total_losses) # We will observe the average loss for per batch size
+      
+      # Visualization
+      progress_bar.set_description(f"Training phase at epoch: {epoch+1}/{num_epochs}, Avg_Loss: {avg_loss:.4f}")
+      writer.add_scalar("Train/Loss", loss, global_step= epoch*len(train_dataloader)+iter)
+      writer.add_scalar("Avg_Train/Avg_Loss", avg_loss, global_step= epoch*len(train_dataloader)+iter)
+
+      # Backward pass
+      optimizer.zero_grad()
+      loss.backward()
+      optimizer.step()
+
+    # Validation phase
+    model.eval()
+    # Initalize counter total losses, all labels, all predictions and progress bar for validation phase
+    total_losses = []
+    all_labels = []
+    all_predictions = []
+    progress_bar = tqdm(val_dataloader, colour="green")
+
+    with torch.no_grad():
+      for iter, (images, labels) in enumerate(progress_bar):
+        # Forward pass
+        images = images.to(device)
+        output = model(images)
+        # Calculate loss, total_losses, avg_loss and prediction
+        labels = labels.to(device)
+        loss = criterion(output, labels)
+        total_losses.append(loss.item())
+        avg_loss = np.mean(total_losses) # We will observe the average loss for per batch size
+        prediction = torch.argmax(output, dim=1)
+        '''
+        To collecting all labels and all predictions
+        We will move the labels tensor and predictions tensor from the GPU to the CPU and converts it into a standard Python list.
+        This is necessary because Python lists cannot hold GPU tensors.
+        '''
+        all_labels.extend(labels.cpu().tolist())
+        all_predictions.extend(prediction.cpu().tolist())
+
+        # Visualization
+        progress_bar.set_description(f"Validation phase at epoch: {epoch+1}/{num_epochs}, Avg_Loss: {avg_loss:.4f}")
+
+    avg_loss = np.mean(total_losses) # We will observe the average loss after evaluating all batches
+    # Visualization
+    avg_loss = np.mean(total_losses)
+    writer.add_scalar("Val/Loss", avg_loss, global_step=epoch)
+    accuracy = accuracy_score(all_labels, all_predictions)
+    writer.add_scalar("Val/Accuracy", accuracy, global_step=epoch)
+    print(f"Epoch: {epoch+1}, Validation Loss: {avg_loss:.4f}, Validation Accuracy now: {accuracy:.4f}")
+    # Visualize the confusion matrix of a classification model, which helps you understand how well the model is performing across different classes
+    plot_confusion_matrix(writer, confusion_matrix(all_labels, all_predictions), train_datasets.categories, epoch)
+
+    # Checkpoint saving 
+    saved_data = {
+            "model": model.state_dict(),
+            "optimizer": optimizer.state_dict(),
+            "epoch": epoch+1,
+            "accuracy": accuracy,
+        }
+    checkpoint = os.path.join(checkpoint_path, "last.pt")
+    torch.save(saved_data, checkpoint)
+
+    # Load and print the best accuracy after training the first epoch.
+    if epoch > 0:
+      bestpoint = os.path.join(checkpoint_path, 'best.pt')
+      saved_best_data = torch.load(bestpoint, map_location=device)
+      goat = saved_best_data['accuracy']
+      print(f"Best Accuracy before: {goat:.4f}")
+    # Compare the accuracy with the best accuracy; if it is better, we will save it as best.pt.
+    if accuracy > goat:
+      bestpoint = os.path.join(checkpoint_path, "best.pt")
+      torch.save(saved_data, bestpoint)
+
+  # Close the writer
+  writer.close()
+
 # Defines a function named plot_confusion_matrix, which is designed to visualize a confusion matrix using Matplotlib.
-def plot_confusion_matrix():
-  
+def plot_confusion_matrix(writer, cm, class_names, epoch):
+  # Create a figure
+  figure = plt.figure(figsize=(20, 20))
+  # Plotting the Confusion Matrix
+  plt.imshow(cm, interpolation='nearest', cmap="OrRd")
+  plt.title("Confusion matrix")
+  plt.colorbar()
+  # Setting tick marks
+  tick_marks = np.arange(len(class_names))
+  plt.xticks(tick_marks, class_names, rotation=45)
+  plt.yticks(tick_marks, class_names)
+
+  # Normalize the confusion matrix
+  cm = np.around(cm.astype('float') / cm.sum(axis=1)[:, np.newaxis], decimals=2)
+
+  # Adding text annotation
+  threshold = cm.max() / 2.
+  for i in range(cm.shape[0]):
+      for j in range(cm.shape[1]):
+          color = "white" if cm[i, j] > threshold else "black"
+          plt.text(j, i, cm[i, j], horizontalalignment="center", color=color)
+
+  # Finalizing the plot
+  plt.tight_layout()
+  plt.ylabel('True label')
+  plt.xlabel('Predicted label')
+  # Logging the figure
+  writer.add_figure('confusion_matrix', figure, epoch)
+
+if __name__ == '__main__':
+  train()
