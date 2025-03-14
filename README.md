@@ -57,7 +57,7 @@ I am training this AI in Google Colab, so you can use and test it there. Google 
 ### ⬇️ Installation
 ***Ensure that you have already installed Git and set up your Python environment.***
 
-Note: For Google Colab users, skip the installation below and download only the 'Training artifacts'.
+Note: For Google Colab users, skip the installation below and download only the 'Training artifacts'no need for unzip the file.
 
 To run this application locally, ensure you have opened the CMD and have the following dependencies installed:
 ```bash
@@ -109,7 +109,7 @@ Then run the first cell to install `Gradio`
 
 ![image](https://github.com/user-attachments/assets/85778e45-9bdf-4b05-a9d8-48efedd338f6)
 
-Then upload the 'Training artifacts' to the /content path. This path is the default when you connect to the runtime.
+Then upload the 'Training_artifacts.zip' to the /content path. This path is the default when you connect to the runtime.
 
 ![image](https://github.com/user-attachments/assets/5dde14d7-eac2-462b-bd45-a672e5d02815)
 
