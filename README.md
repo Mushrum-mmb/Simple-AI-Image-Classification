@@ -45,10 +45,13 @@ Provides real-time feedback by displaying the predicted class and its confidence
 Automatically uses GPU acceleration if available, ensuring faster inference times.
 * Easy Deployment:
 The Gradio interface can be launched with a simple command, and the share=True option allows sharing the interface with others via a public link.
-
+* Easy Usage:
+I am training this AI in Google Colab, so you can use and test it there. Google Colab is suitable for those who have a low-spec device like mine.
 
 ### ⬇️ Installation
 ***Ensure that you have already installed Git and set up your Python environment.***
+
+Note: For Google Colab users, skip the installation below and download only the 'Training artifacts'.
 
 To run this application locally, ensure you have opened the CMD and have the following dependencies installed:
 ```bash
@@ -85,9 +88,11 @@ Open the provided link in your browser to access the interface. Your work will l
 
 ### 💻 Google Colab Usage
 
-If you can train and run the script on your potato computer like I do, you can also run the script in Google Colab, which I am using to train this AI. :')
+If you can't train and run the script on your potato computer like I do, you can also run the script in Google Colab, which I am using to train this AI. :')
 
-[Click here](https://colab.research.google.com/drive/13yuj3zqh8ed1wi9KkUfnDeBKN0ZYgel1?usp=sharing)
+Just read and run the cell in Google Colab for investment purposes. If you only want to use the AI, I will provide direct tutoring.
+
+[Click here for access my notebook](https://colab.research.google.com/drive/13yuj3zqh8ed1wi9KkUfnDeBKN0ZYgel1?usp=sharing)
 
 
 ### 👍 How It Works
