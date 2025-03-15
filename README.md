@@ -1,7 +1,5 @@
 # Simple-AI-Image-Classification
 
-# Work in progress ⏳ I will consider the accuracy now, kinda sus <(")
-
 ⭐ Star me on GitHub — it motivates me a lot!
 
 🔥 Share it if you like it!!!
