@@ -30,7 +30,7 @@ This AI application performs image classification using deep learning. Trained o
 ![image](https://github.com/user-attachments/assets/df568fd1-b25f-49e3-92c5-360d37624238)
 ![image](https://github.com/user-attachments/assets/4556fa99-a84a-4df5-8e14-5cdbf633069f)
 
-## The accuracy now is 99.91% (kinda sus, as this accuracy is calculated from the validation datasets).
+## The accuracy now is 99.81% (kinda sus, as this accuracy is calculated from the validation datasets).
 ![individualImage](https://github.com/user-attachments/assets/15509cc8-ad6e-4a65-aa44-0297fbffdb9f)
 ![image](https://github.com/user-attachments/assets/790bfbe7-4385-489f-92fa-9279ba989c00)
 ![image](https://github.com/user-attachments/assets/46f773bf-4750-4be9-99ce-519df895aeed)
