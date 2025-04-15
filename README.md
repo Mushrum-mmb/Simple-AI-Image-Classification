@@ -17,7 +17,7 @@
 - [Usage](#%EF%B8%8F-usage)
 - [Google Colab Usage](#-google-colab-usage)
 - [How It Works](#-how-it-works)
-
+- [License](#-license)
 
 ### 🚀 About
 
@@ -151,3 +151,6 @@ Run the final cell and enjoy it ^V^.
 * Sets up a Gradio web interface for the model, enabling users to upload images for classification.
 * Loads the trained model from a specified checkpoint, processes uploaded images, and returns predictions.
 * Provides a user-friendly interface for real-time image classification.
+
+### 📜 License
+This project is licensed under the MIT License - see the LICENSE file for details.
