@@ -7,7 +7,7 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-Latest-red?style=for-the-badge&logo=pytorch&logoColor=white)
 ![ResNet](https://img.shields.io/badge/Model-ResNet--50-green?style=for-the-badge&logo=atom&logoColor=white)
 
-### 🎯 **99.81% Accuracy** | 🚀 **Real-time Inference** | 🌐 **Easy Deployment**
+### 🎯 **I made this for educational purposes and to showcase my experience in creating AI applications.**
 
 ⭐ **Star this repo if it helps you!** ⭐
 
@@ -24,9 +24,6 @@
 
 ## 📋 Table of Contents
 
-<details>
-<summary>🔍 <strong>Click to expand navigation</strong></summary>
-
 - [🚀 About](#-about)
 - [✨ Features](#-features)
 - [⬇️ Installation](#️-installation)
@@ -37,9 +34,6 @@
 - [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
 
-</details>
-
----
 
 ## 🚀 About
 
@@ -49,21 +43,19 @@
 
 </div>
 
-This sophisticated AI application leverages the power of **ResNet-50** architecture to perform highly accurate image classification. Trained on carefully curated private datasets, it specializes in animal category prediction with remarkable precision.
-
 <div align="center">
 
 | 🎯 **Accuracy** | 🚀 **Model** | 🛠️ **Framework** | 👨‍💻 **Author** |
 |:---:|:---:|:---:|:---:|
-| **99.81%** | ResNet-50 | Gradio | [Mushrum-mmb](https://github.com/Mushrum-mmb/) |
+| **99.81% (Over-fitting)** | ResNet-50 | Gradio | [Mushrum-mmb](https://github.com/Mushrum-mmb/) |
 
 </div>
 
 ### 🌟 **Key Highlights:**
-- 🔥 **State-of-the-art accuracy** at 99.81%
+- 🔥 **State-of-the-art accuracy** at 99.81%, may be it's over-fitting.
 - ⚡ **Real-time predictions** with confidence scores
 - 🌐 **Web-based interface** for easy access
-- 🚀 **GPU acceleration** support
+- 🚀 **Comment tutoring** support in code
 - 📱 **Cross-platform compatibility**
 
 ![image](https://github.com/user-attachments/assets/df568fd1-b25f-49e3-92c5-360d37624238)
@@ -80,7 +72,7 @@ This sophisticated AI application leverages the power of **ResNet-50** architect
 ![Accuracy Badge](https://img.shields.io/badge/Accuracy-99.81%25-brightgreen?style=for-the-badge&logo=target&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge&logo=checkmarx&logoColor=white)
 
-> **Note:** This exceptional accuracy is calculated from validation datasets. Real-world performance may vary.
+> **Note:** This exceptional accuracy is calculated from validation datasets. Real-world performance may vary. It's also over-fitting.
 
 </div>
 
@@ -117,7 +109,7 @@ This sophisticated AI application leverages the power of **ResNet-50** architect
 <div align="center">
 
 ### 🎯 **Perfect For:**
-🎓 **Students** • 🔬 **Researchers** • 👨‍💻 **Developers** • 🏢 **Businesses**
+🎓 **Students** • 🔬 **Researchers** • 👨‍💻 **Developers** 
 
 </div>
 
