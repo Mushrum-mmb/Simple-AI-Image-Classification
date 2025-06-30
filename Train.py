@@ -203,13 +203,13 @@ def train():  #def train(args):
         # Visualization
         progress_bar.set_description(f"Validation phase at epoch: {epoch+1}/{num_epochs}, Avg_Loss: {avg_loss:.4f}")
 
-    avg_loss = np.mean(total_losses) # We will observe the average loss after evaluating all batches
+    # We will observe the average loss after evaluating all batches
     # Visualization
-    avg_loss = np.mean(total_losses)
-    writer.add_scalar("Val/Loss", avg_loss, global_step=epoch)
+    final_avg_loss = np.mean(total_losses)
+    writer.add_scalar("Val/Loss", final_avg_loss, global_step=epoch)
     accuracy = accuracy_score(all_labels, all_predictions)
     writer.add_scalar("Val/Accuracy", accuracy, global_step=epoch)
-    print(f"Epoch: {epoch+1}, Validation Loss: {avg_loss:.4f}, Validation Accuracy now: {accuracy:.4f}")
+    print(f"Epoch: {epoch+1}, Validation Loss: {final_avg_loss:.4f}, Validation Accuracy now: {accuracy:.4f}")
     # Visualize the confusion matrix of a classification model, which helps you understand how well the model is performing across different classes
     plot_confusion_matrix(writer, confusion_matrix(all_labels, all_predictions), train_datasets.categories, epoch)
 
