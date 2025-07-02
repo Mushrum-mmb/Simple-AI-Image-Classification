@@ -12,7 +12,7 @@ First import:
 - import warnings: is used to issue and manage warning messages in Python.
 """
 import torch
-from torchvision.models import resnet50, ResNet50_Weights
+from torchvision.models import resnet50
 import torch.nn as nn
 import os
 import numpy as np
@@ -40,7 +40,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Device: {device}")
   
 # In this section, we will choose the model. Since I am using transfer learning, I will select ResNet50 and its weights.
-model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
+model = resnet50()
 in_features = model.fc.in_features # Remain the in_features of Dense Layer
 del model.fc # Delete it
 model.fc = nn.Linear(in_features=in_features, out_features=6, bias=True) # Modify it to remove the fully connected layers, ensuring the output length matches the number of categories.
