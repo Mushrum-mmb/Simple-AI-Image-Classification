@@ -66,8 +66,7 @@ transform = Compose([
 
 # Define a classify image function
 def classify_image(image):
-  # Retrieve an image, convert, resize and transform it to let the model can get it.
-  image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+  # Retrieve an image, resize and transform it to let the model can get it.
   image = cv2.resize(image, (224,224))
   # ToTensor() will be (3, 224, 224) and after unsqueeze(0), the shape will be (1, 3, 224, 224), which is suitable for model input.
   image_tensor = transform(image).unsqueeze(0).to(device) 
